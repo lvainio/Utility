@@ -15,11 +15,14 @@ def dijkstra(G, s):
 
         # If searching for a specific node we can 
         # check node == target here and break since the 
-        # shortest path to this node is already found.
+        # shortest path to this node is already found. if
+        # we only care about the distance here we also dont really
+        # need the dist list since we have that alreayd in the heap as
+        # key.
 
         if node in visited:
             continue
-        
+
         visited.add(node)
 
         # heapq uses the first element of the tuple as key, if two are equal
