@@ -1,4 +1,7 @@
-from collections import defaultdict
+
+def dfs_recursive(graph, start, visited=set()):
+    pass
+
 
 def dfs_iterative(graph, start):
     visited = set()
