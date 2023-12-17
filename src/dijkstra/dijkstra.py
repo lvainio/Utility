@@ -5,6 +5,8 @@ def dijkstra(G, s):
     dist = [float('inf') if v != s else 0 for v in range(len(G))]
     prev = [None for _ in range(len(G))]
 
+    # Remember edges have to be 0 or more.
+
     visited = set()
     pq = [(dist[s], s)]
 
@@ -17,8 +19,11 @@ def dijkstra(G, s):
 
         if node in visited:
             continue
-        else:
-            visited.add(node)
+        
+        visited.add(node)
+
+        # heapq uses the first element of the tuple as key, if two are equal
+        # then it goes to next element.
 
         for neighbour, edge in G[node]:
             if distance + edge < dist[neighbour]:
@@ -30,6 +35,8 @@ def dijkstra(G, s):
                 # This avoids duplicate nodes in the pq and the need to check if
                 # node is already visited. Requires less space. In this case
                 # we should populate the priority queue with all the nodes initially.
+                # More elegant solution but update key is usually not available in standard
+                # libraries.
 
     return dist, prev
 
